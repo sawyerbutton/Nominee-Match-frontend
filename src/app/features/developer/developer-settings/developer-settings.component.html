@@ -1,0 +1,85 @@
+<div class="developer-settings-container">
+  <h2>开发者设置</h2>
+
+  <!-- 当前钱包信息 -->
+  <div *ngIf="currentWallet" class="current-wallet">
+    <h3>当前绑定的钱包</h3>
+    <div class="wallet-info">
+      <span class="wallet-address">{{ currentWallet }}</span>
+      <button class="change-wallet-btn" (click)="connectWallet()">
+        更换钱包
+      </button>
+    </div>
+  </div>
+
+  <!-- 设置表单 -->
+  <form [formGroup]="settingsForm" (ngSubmit)="saveSettings()" class="settings-form">
+    <div class="form-group">
+      <label for="walletAddress">ETH钱包地址</label>
+      <div class="wallet-input-group">
+        <input
+          id="walletAddress"
+          type="text"
+          formControlName="walletAddress"
+          class="form-control"
+          placeholder="输入ETH钱包地址"
+          [readonly]="!!currentWallet"
+        >
+        <button
+          type="button"
+          class="verify-btn"
+          (click)="verifyWallet()"
+          [disabled]="!settingsForm.get('walletAddress')?.value"
+        >
+          验证钱包
+        </button>
+      </div>
+      <div *ngIf="settingsForm.get('walletAddress')?.errors?.['pattern']" class="error-message">
+        请输入有效的ETH钱包地址
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="displayName">显示名称</label>
+      <input
+        id="displayName"
+        type="text"
+        formControlName="displayName"
+        class="form-control"
+        placeholder="输入显示名称"
+      >
+      <div *ngIf="settingsForm.get('displayName')?.errors?.['required']" class="error-message">
+        请输入显示名称
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="description">个人简介</label>
+      <textarea
+        id="description"
+        formControlName="description"
+        class="form-control"
+        placeholder="输入个人简介"
+        rows="4"
+      ></textarea>
+    </div>
+
+    <!-- 状态消息 -->
+    <div *ngIf="error" class="error-message">
+      {{ error }}
+    </div>
+    <div *ngIf="success" class="success-message">
+      {{ success }}
+    </div>
+
+    <div class="form-actions">
+      <button
+        type="submit"
+        [disabled]="!settingsForm.valid || isConnecting"
+        class="submit-button"
+      >
+        {{ isConnecting ? '连接中...' : '保存设置' }}
+      </button>
+    </div>
+  </form>
+</div>

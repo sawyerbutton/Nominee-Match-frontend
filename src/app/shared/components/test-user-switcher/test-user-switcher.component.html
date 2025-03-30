@@ -1,0 +1,30 @@
+<div class="test-user-switcher">
+  <button
+    class="toggle-button"
+    (click)="toggleTestMode()"
+    [class.active]="isTestMode"
+  >
+    {{ isTestMode ? '关闭测试模式' : '开启测试模式' }}
+  </button>
+
+  <div class="test-panel" *ngIf="isTestMode">
+    <div class="current-user" *ngIf="currentUser">
+      当前用户: {{ currentUser }}
+      <button class="logout-button" (click)="logout()">登出</button>
+    </div>
+
+    <div class="test-users">
+      <h3>测试用户列表</h3>
+      <div class="user-list">
+        <button
+          *ngFor="let user of testUsers"
+          class="user-button"
+          (click)="switchUser(user)"
+          [class.active]="currentUser === user.email"
+        >
+          {{ user.name }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

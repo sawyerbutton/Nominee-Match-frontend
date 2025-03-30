@@ -1,0 +1,95 @@
+.test-user-switcher {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.toggle-button {
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+
+.toggle-button:hover {
+  background-color: #357abd;
+}
+
+.toggle-button.active {
+  background-color: #dc3545;
+}
+
+.test-panel {
+  position: absolute;
+  bottom: 100%;
+  right: 0;
+  width: 300px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  margin-bottom: 10px;
+}
+
+.current-user {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  background-color: #f8f9fa;
+  border-radius: 4px;
+  margin-bottom: 16px;
+}
+
+.logout-button {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.test-users h3 {
+  margin: 0 0 12px 0;
+  font-size: 16px;
+  color: #333;
+}
+
+.user-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.user-button {
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  padding: 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s;
+}
+
+.user-button:hover {
+  background-color: #e9ecef;
+}
+
+.user-button.active {
+  background-color: #4a90e2;
+  color: white;
+  border-color: #4a90e2;
+}
+
+@media (max-width: 768px) {
+  .test-panel {
+    width: 250px;
+  }
+}

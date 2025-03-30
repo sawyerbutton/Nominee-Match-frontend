@@ -1,0 +1,14 @@
+<nav class="nav-menu">
+  <div class="nav-brand">
+    <h1>每一个I人都有队友</h1>
+  </div>
+
+  <ul class="nav-items">
+    <li *ngFor="let item of menuItems" class="nav-item">
+      <a [routerLink]="item.route" routerLinkActive="active" class="nav-link">
+        <i [class]="item.icon"></i>
+        <span>{{ item.label }}</span>
+      </a>
+    </li>
+  </ul>
+</nav>

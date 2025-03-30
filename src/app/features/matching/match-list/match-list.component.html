@@ -1,0 +1,47 @@
+<div class="match-list-container">
+  <h2>匹配列表</h2>
+
+  <div *ngIf="loading" class="loading">
+    加载中...
+  </div>
+
+  <div *ngIf="error" class="error">
+    {{ error }}
+  </div>
+
+  <div *ngIf="!loading && !error" class="matches">
+    <div *ngIf="matches.length === 0" class="no-matches">
+      暂无匹配结果
+    </div>
+
+    <div *ngFor="let match of matches" class="match-card">
+      <div class="match-header">
+        <span class="match-score">匹配度: {{ match.matchScore }}%</span>
+        <span class="match-date">{{ match.createdAt | date:'yyyy-MM-dd' }}</span>
+      </div>
+
+      <div class="match-content">
+        <div class="match-status" [ngClass]="match.status">
+          {{ match.status === 'pending' ? '待处理' :
+             match.status === 'accepted' ? '已接受' :
+             '已拒绝' }}
+        </div>
+
+        <div class="match-actions" *ngIf="match.status === 'pending'">
+          <button
+            class="accept-button"
+            (click)="acceptMatch(match.id)"
+          >
+            接受
+          </button>
+          <button
+            class="reject-button"
+            (click)="rejectMatch(match.id)"
+          >
+            拒绝
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

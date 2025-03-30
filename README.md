@@ -1,27 +1,94 @@
-# NomineeMatchFrontend
+# Nominee Match Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.1.
+Nominee Match是一个创新的提名匹配平台，旨在连接开发者与项目，实现高效的人才匹配。
 
-## Development server
+## 功能特性
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+### 1. 用户管理
+- 用户注册和登录
+- 个人资料管理
+- 身份认证和授权
 
-## Code scaffolding
+### 2. 开发者功能
+- 开发者资料展示
+- 技能和专长展示
+- 项目经验展示
+- 可接受的工作类型设置
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### 3. 匹配系统
+- 智能匹配算法
+- 项目需求分析
+- 开发者推荐
+- 匹配度评分
 
-## Build
+### 4. 支付系统
+- 安全的支付处理
+- 交易历史记录
+- 支付状态追踪
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## 技术栈
 
-## Running unit tests
+- **前端框架**: Angular
+- **UI组件**: Angular Material
+- **状态管理**: NgRx
+- **样式处理**: SCSS
+- **类型系统**: TypeScript
+- **包管理器**: pnpm
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## 项目结构
 
-## Running end-to-end tests
+```
+src/
+├── app/
+│   ├── core/           # 核心服务和功能
+│   ├── features/       # 功能模块
+│   │   ├── developer/  # 开发者相关功能
+│   │   ├── matching/   # 匹配系统
+│   │   ├── payment/    # 支付系统
+│   │   └── profile/    # 用户档案
+│   ├── shared/         # 共享组件和工具
+│   └── app.module.ts   # 主模块
+├── assets/            # 静态资源
+└── environments/      # 环境配置
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## 开发环境设置
 
-## Further help
+1. 安装依赖
+```bash
+pnpm install
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+2. 启动开发服务器
+```bash
+pnpm start
+```
+
+3. 构建生产版本
+```bash
+pnpm build
+```
+
+4. 运行测试
+```bash
+pnpm test
+```
+
+## 设计规范
+
+- 遵循Material Design设计规范
+- 响应式设计，支持多设备
+- 无障碍设计支持
+- 深色/浅色主题支持
+
+## 贡献指南
+
+1. Fork 项目
+2. 创建特性分支
+3. 提交更改
+4. 推送到分支
+5. 创建Pull Request
+
+## 许可证
+
+MIT License

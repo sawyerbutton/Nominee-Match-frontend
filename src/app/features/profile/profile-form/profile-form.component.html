@@ -1,0 +1,105 @@
+<div class="profile-form-container">
+  <h2>创建你的技术档案</h2>
+  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">姓名</label>
+      <input
+        id="name"
+        type="text"
+        formControlName="name"
+        class="form-control"
+        placeholder="输入你的姓名"
+      >
+    </div>
+
+    <div class="form-group">
+      <label for="email">邮箱</label>
+      <input
+        id="email"
+        type="email"
+        formControlName="email"
+        class="form-control"
+        placeholder="输入你的邮箱"
+      >
+    </div>
+
+    <div class="form-group">
+      <label for="githubUsername">GitHub用户名</label>
+      <input
+        id="githubUsername"
+        type="text"
+        formControlName="githubUsername"
+        class="form-control"
+        placeholder="输入你的GitHub用户名"
+      >
+    </div>
+
+    <div class="form-group">
+      <label for="experience">工作经验（年）</label>
+      <input
+        id="experience"
+        type="number"
+        formControlName="experience"
+        class="form-control"
+        min="0"
+        placeholder="输入你的工作经验年限"
+      >
+    </div>
+
+    <div class="form-group">
+      <label>位置信息</label>
+      <div class="location-section">
+        <button
+          type="button"
+          class="location-button"
+          (click)="getCurrentLocation()"
+          [disabled]="isGettingLocation"
+        >
+          {{ isGettingLocation ? '获取位置中...' : '获取当前位置' }}
+        </button>
+
+        <div *ngIf="location" class="location-info">
+          <p><strong>地址：</strong>{{ location.address }}</p>
+          <p><strong>城市：</strong>{{ location.city }}</p>
+          <p><strong>国家：</strong>{{ location.country }}</p>
+        </div>
+
+        <div *ngIf="locationError" class="error-message">
+          {{ locationError }}
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>技能选择</label>
+      <div class="skill-categories">
+        <div *ngFor="let category of skillCategories" class="skill-category">
+          <h3 class="category-title">{{ category.name }}</h3>
+          <div *ngFor="let group of category.skills" class="skill-group">
+            <h4 class="group-title">{{ group.name }}</h4>
+            <div class="skills-container">
+              <div
+                *ngFor="let skill of group.skills"
+                class="skill-chip"
+                [class.selected]="isSkillSelected(skill.id)"
+                (click)="toggleSkill(skill)"
+              >
+                {{ skill.name }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button
+        type="submit"
+        [disabled]="!profileForm.valid"
+        class="submit-button"
+      >
+        创建档案
+      </button>
+    </div>
+  </form>
+</div>
